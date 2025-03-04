@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,11 +12,14 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
-        // dd('123');
-        $data = DB::table('students')->get();
+      
+        // $users = DB::table('users')
+        // ->select('name', 'email as user_email')
+        // ->get();
 
-        return view('student.index', ['data' => $data]);
+        $data = DB::table('students')->select('id as my_id', 'name as my_name','mobile as my_mobile')->get();
+        dd($data);
+        return view('student.index');
         // dd($data);
     }
 
